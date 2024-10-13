@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,4 +25,7 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn(name = "cus_Id",nullable = false)
     private CustomerEntity cusId;
+
+    @OneToMany(mappedBy = "orders")
+    private List<OrderDetailsEntity> order_Id;
 }

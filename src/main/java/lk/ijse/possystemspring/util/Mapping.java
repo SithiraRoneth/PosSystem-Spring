@@ -7,9 +7,11 @@ package lk.ijse.possystemspring.util;
 
 import lk.ijse.possystemspring.dto.impl.CustomerDto;
 import lk.ijse.possystemspring.dto.impl.ItemDto;
+import lk.ijse.possystemspring.dto.impl.OrderDetailsDto;
 import lk.ijse.possystemspring.dto.impl.OrderDto;
 import lk.ijse.possystemspring.entity.impl.CustomerEntity;
 import lk.ijse.possystemspring.entity.impl.ItemEntity;
+import lk.ijse.possystemspring.entity.impl.OrderDetailsEntity;
 import lk.ijse.possystemspring.entity.impl.OrderEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -51,6 +53,16 @@ public class Mapping {
     }
     public List<OrderDto> toOrderDtoList(List<OrderEntity> orderEntityList) {
         return modelMapper.map(orderEntityList, new TypeToken<List<OrderDto>>() {}.getType());
+    }
+
+    public OrderDetailsEntity toOrderDetailsEntity(OrderDetailsDto orderDetailsDto) {
+        return modelMapper.map(orderDetailsDto, OrderDetailsEntity.class);
+    }
+    public OrderDetailsDto toOrderDetailsDto(OrderDetailsEntity orderDetailsEntity) {
+        return modelMapper.map(orderDetailsEntity, OrderDetailsDto.class);
+    }
+    public List<OrderDetailsDto> toOrderDetailsDtoList(List<OrderDetailsEntity> orderDetialsEntityList) {
+        return modelMapper.map(orderDetialsEntityList, new TypeToken<List<OrderDetailsDto>>() {}.getType());
     }
 
 }

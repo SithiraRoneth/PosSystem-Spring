@@ -15,6 +15,8 @@ import lk.ijse.possystemspring.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService {
@@ -29,5 +31,11 @@ public class OrderServiceImpl implements OrderService {
         if (savedOrder == null) {
             throw new DataPersistException("Order not saved");
         }
+    }
+
+    @Override
+    public List<OrderDto> getAllOrders() {
+        List<OrderEntity> allOrders = orderDao.findAll();
+        return orderMapping.toOrderDtoList(allOrders);
     }
 }
